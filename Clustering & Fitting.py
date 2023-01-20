@@ -31,15 +31,20 @@ indicators = ['CO2 emissions (metric tons per capita)']
 
 year_co2,cnty_co2= solution(filename,countries,columns,indicators[0])
 
-#Scatter Plot 
+#Country and emission level for each year
+print(year_co2)
+
+#Scatter Plot
+plt.figure() 
 scatter = year_co2.plot('1990', '2019',kind='scatter')
+plt.title('Co2 Dispersion')
 print(scatter)
 
 #c02 emission
 x = year_co2.values
 print(x)
 
-#Plot showing K-MEANS
+#Plot showing K-MEANS using CS
 plt.figure()
 cs = []
 for i in range(1, 10):
@@ -65,7 +70,7 @@ plt.scatter(x[y_kmeans == 2, 0], x[y_kmeans == 2, 1], s = 50, c = 'green',label 
 #plt.scatter(x[y_kmeans == 3, 0], x[y_kmeans == 3, 1], s = 50, c = 'blue',label = 'Iabel 3')
 #plt.scatter(x[y_kmeans == 4, 0], x[y_kmeans == 4, 1], s = 50, c = 'black',label = 'Iabel 4')
 plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:,1], s = 10, c = 'red', label = 'Centroids')
-plt.title('Clusters and Centroids')
+plt.title('Clusters of CO2 emission')
 plt.legend()
 plt.show()
 
